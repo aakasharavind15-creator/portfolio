@@ -1,22 +1,18 @@
 "use client";
 
-import { useState } from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
-import MenuIcon from "@mui/icons-material/Menu";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
-import { useColorMode } from "@/theme/ColorModeContext";
+import * as React from "react";
+import { Menu } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -26,60 +22,50 @@ const navItems = [
 ];
 
 export function Header() {
-  const { mode, toggleColorMode } = useColorMode();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const [drawerOpen, setDrawerOpen] = useState(false);
-
-  const navButtons = (
-    <Stack direction="row" spacing={1}>
-      {navItems.map((item) => (
-        <Button key={item.href} color="inherit" href={item.href}>
-          {item.label}
-        </Button>
-      ))}
-    </Stack>
-  );
-
   return (
-    <AppBar position="sticky" color="default" elevation={1}>
-      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Typography variant="h6" component="a" href="#hero" sx={{ fontWeight: 700, color: "primary.main" }}>
-          Aakash
-        </Typography>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-md supports-backdrop-filter:bg-background/50">
+      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4 sm:px-6">
+        <a href="#hero" className="text-lg font-semibold tracking-tight">
+          Aakash<span className="text-primary">.</span>
+        </a>
 
-        {isMobile ? (
-          <Stack direction="row" spacing={1} sx={{ alignItems: "center" }}>
-            <IconButton onClick={toggleColorMode} aria-label="Toggle color mode">
-              {mode === "light" ? <DarkModeIcon /> : <LightModeIcon />}
-            </IconButton>
-            <IconButton onClick={() => setDrawerOpen(true)} aria-label="Open navigation menu">
-              <MenuIcon />
-            </IconButton>
-            <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-              <List sx={{ width: 220 }}>
+        <nav className="hidden items-center gap-1 md:flex">
+          {navItems.map((item) => (
+            <Button key={item.href} variant="ghost" size="sm" asChild>
+              <a href={item.href}>{item.label}</a>
+            </Button>
+          ))}
+          <ModeToggle />
+        </nav>
+
+        <div className="flex items-center gap-1 md:hidden">
+          <ModeToggle />
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" aria-label="Open navigation menu">
+                <Menu className="size-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <SheetHeader>
+                <SheetTitle>Menu</SheetTitle>
+              </SheetHeader>
+              <nav className="flex flex-col gap-1 px-4">
                 {navItems.map((item) => (
-                  <ListItemButton
-                    key={item.href}
-                    component="a"
-                    href={item.href}
-                    onClick={() => setDrawerOpen(false)}
-                  >
-                    <ListItemText primary={item.label} />
-                  </ListItemButton>
+                  <SheetClose key={item.href} asChild>
+                    <a
+                      href={item.href}
+                      className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent"
+                    >
+                      {item.label}
+                    </a>
+                  </SheetClose>
                 ))}
-              </List>
-            </Drawer>
-          </Stack>
-        ) : (
-          <Stack direction="row" spacing={2} sx={{ alignItems: "center" }}>
-            {navButtons}
-            <IconButton onClick={toggleColorMode} aria-label="Toggle color mode">
-              {mode === "light" ? <DarkModeIcon /> : <LightModeIcon />}
-            </IconButton>
-          </Stack>
-        )}
-      </Toolbar>
-    </AppBar>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </div>
+    </header>
   );
 }

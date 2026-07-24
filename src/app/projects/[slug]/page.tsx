@@ -1,13 +1,14 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { ProjectMeta } from "@/components/project-detail/ProjectMeta";
-import { PdfViewer } from "@/components/project-detail/PdfViewer";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { Button } from "@/components/ui/button";
+import { ProjectMeta } from "@/components/project-detail/project-meta";
+import { PdfViewer } from "@/components/project-detail/pdf-viewer";
+import { FadeIn } from "@/components/motion/fade-in";
 import { getProjectBySlug, projects } from "@/data/projects";
 
 export function generateStaticParams() {
@@ -45,15 +46,18 @@ export default async function ProjectDetailPage({
   return (
     <>
       <Header />
-      <Container maxWidth="md" sx={{ py: { xs: 4, md: 6 } }}>
-        <Box sx={{ mb: 3 }}>
-          <Button component="a" href="/#projects" startIcon={<ArrowBackIcon />}>
-            Back to projects
+      <main className="mx-auto max-w-3xl px-4 pt-28 pb-16 sm:px-6">
+        <FadeIn y={8}>
+          <Button asChild variant="ghost" className="mb-4 -ml-3">
+            <Link href="/#projects">
+              <ArrowLeft className="size-4" />
+              Back to projects
+            </Link>
           </Button>
-        </Box>
-        <ProjectMeta project={project} />
-        <PdfViewer pdfPath={project.pdfPath} />
-      </Container>
+          <ProjectMeta project={project} />
+          <PdfViewer pdfPath={project.pdfPath} />
+        </FadeIn>
+      </main>
       <Footer />
     </>
   );

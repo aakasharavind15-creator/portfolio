@@ -1,8 +1,5 @@
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
-import Chip from "@mui/material/Chip";
+import { Badge } from "@/components/ui/badge";
+import { FadeIn, Stagger, StaggerItem } from "@/components/motion/fade-in";
 
 const skills = [
   "Financial Modeling",
@@ -17,26 +14,24 @@ const skills = [
 
 export function Skills() {
   return (
-    <Box id="skills" sx={{ py: { xs: 8, md: 10 }, bgcolor: "background.paper" }}>
-      <Container maxWidth="md">
-        <Typography variant="h4" sx={{ mb: 4 }}>
-          Skills
-        </Typography>
-        <Stack direction="row" spacing={1.5} useFlexGap sx={{ flexWrap: "wrap" }}>
+    <section id="skills" className="border-y border-border/60 bg-secondary/30 py-24">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        <FadeIn>
+          <h2 className="mb-8 text-3xl font-bold tracking-tight">Skills</h2>
+        </FadeIn>
+        <Stagger className="flex flex-wrap gap-3" staggerDelay={0.05}>
           {skills.map((skill) => (
-            <Chip
-              key={skill}
-              label={skill}
-              sx={{
-                bgcolor: "secondary.main",
-                color: "secondary.contrastText",
-                fontWeight: 600,
-                px: 1,
-              }}
-            />
+            <StaggerItem key={skill}>
+              <Badge
+                variant="accent"
+                className="rounded-full px-4 py-2 text-sm font-medium transition-transform hover:-translate-y-0.5"
+              >
+                {skill}
+              </Badge>
+            </StaggerItem>
           ))}
-        </Stack>
-      </Container>
-    </Box>
+        </Stagger>
+      </div>
+    </section>
   );
 }

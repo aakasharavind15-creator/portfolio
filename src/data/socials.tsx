@@ -1,9 +1,6 @@
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import YouTubeIcon from "@mui/icons-material/YouTube";
-import EmailIcon from "@mui/icons-material/Email";
-import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
-import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
+import { Mail, Briefcase, Phone } from "lucide-react";
+import { SiGithub, SiYoutube } from "@icons-pack/react-simple-icons";
+import { LinkedinIcon } from "@/components/icons/linkedin-icon";
 import type { SocialLink } from "@/types/social";
 
 // Placeholder social links. Replace hrefs with your real profile URLs.
@@ -13,37 +10,37 @@ export const socials: SocialLink[] = [
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/your-profile",
-    icon: <LinkedInIcon />,
+    icon: <LinkedinIcon className="size-5" />,
     external: true,
   },
   {
     label: "GitHub",
     href: "https://github.com/your-username",
-    icon: <GitHubIcon />,
+    icon: <SiGithub size={20} />,
     external: true,
   },
   {
     label: "YouTube",
     href: "https://youtube.com/@your-channel",
-    icon: <YouTubeIcon />,
+    icon: <SiYoutube size={20} />,
     external: true,
   },
   {
     label: "Email",
     href: "mailto:aakashsmartrock@gmail.com",
-    icon: <EmailIcon />,
+    icon: <Mail className="size-5" />,
   },
   {
     label: "Naukri",
     href: "https://www.naukri.com/mnjuser/profile",
-    icon: <BusinessCenterIcon />,
+    icon: <Briefcase className="size-5" />,
     external: true,
     tooltip: "Naukri profile",
   },
   {
     label: "Contact info",
     href: "#contact",
-    icon: <ContactPhoneIcon />,
+    icon: <Phone className="size-5" />,
     tooltip: "Pune, India · +91-XXXXXXXXXX",
   },
 ];
