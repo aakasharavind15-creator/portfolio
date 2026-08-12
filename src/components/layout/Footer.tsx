@@ -7,7 +7,7 @@ export function Footer() {
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 py-14 text-center sm:px-6">
         <h2 className="text-xl font-semibold tracking-tight">Let&apos;s connect</h2>
         <p className="max-w-md text-sm text-muted-foreground">
-          Open to Financial Analyst roles and internships -- feel free to reach out on any of these.
+          Open to Financial Analyst, FP&amp;A, and Audit/Compliance roles -- feel free to reach out on any of these.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-2">

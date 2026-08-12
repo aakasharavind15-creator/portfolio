@@ -2,6 +2,7 @@ import { Mail, Briefcase, Phone } from "lucide-react";
 import { SiGithub, SiYoutube } from "@icons-pack/react-simple-icons";
 import { LinkedinIcon } from "@/components/icons/linkedin-icon";
 import type { SocialLink } from "@/types/social";
+import { profile } from "@/data/profile";
 
 // Placeholder social links. Replace hrefs with your real profile URLs.
 // "Contact info" is not an external link -- it shows your details in a
@@ -27,7 +28,7 @@ export const socials: SocialLink[] = [
   },
   {
     label: "Email",
-    href: "mailto:aakashsmartrock@gmail.com",
+    href: `mailto:${profile.email}`,
     icon: <Mail className="size-5" />,
   },
   {
@@ -41,6 +42,6 @@ export const socials: SocialLink[] = [
     label: "Contact info",
     href: "#contact",
     icon: <Phone className="size-5" />,
-    tooltip: "Pune, India · +91-XXXXXXXXXX",
+    tooltip: `${profile.location} · ${profile.phone}`,
   },
 ];

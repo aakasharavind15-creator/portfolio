@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "motion/react";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Download } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Stagger, StaggerItem } from "@/components/motion/fade-in";
+import { profile } from "@/data/profile";
 
 export function Hero() {
   return (
@@ -26,7 +27,7 @@ export function Hero() {
         <Stagger className="flex flex-col items-start gap-6">
           <StaggerItem>
             <Badge variant="accent" className="px-3 py-1 text-xs font-semibold tracking-wide uppercase">
-              Financial Analyst · Fresher
+              Open to Financial Analyst & Audit/Compliance Roles
             </Badge>
           </StaggerItem>
 
@@ -42,9 +43,10 @@ export function Hero() {
 
           <StaggerItem>
             <p className="max-w-xl text-lg text-muted-foreground">
-              I turn financial data into clear, decision-ready analysis --
-              financial modeling, valuation, and variance analysis for
-              businesses that need answers, not just numbers.
+              {profile.title} with hands-on experience in audit compliance,
+              MIS reporting, and accounting operations -- now building on
+              that foundation with the PGFAP certification to move into
+              financial analysis.
             </p>
           </StaggerItem>
 
@@ -53,6 +55,12 @@ export function Hero() {
               <a href="#projects">View Projects</a>
             </Button>
             <Button size="lg" variant="outline" asChild>
+              <a href={profile.resumeUrl} download>
+                <Download className="size-4" />
+                Download Resume
+              </a>
+            </Button>
+            <Button size="lg" variant="ghost" asChild>
               <a href="#contact">Get in touch</a>
             </Button>
           </StaggerItem>

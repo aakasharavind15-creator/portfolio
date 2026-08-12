@@ -1,53 +1,37 @@
 import type { Project } from "@/types/project";
 
-// Placeholder project data. Replace the values below with your real
-// projects: update pdfPath to point at your real PDF in /public/projects,
-// and githubUrl to the repo containing your Excel workings + final PDF.
+// Real research projects from the resume. pdfPath/githubUrl are placeholders --
+// swap in the actual PDF (under /public/projects) and repo URL when ready.
 export const projects: Project[] = [
   {
     id: "1",
-    slug: "dcf-valuation-model",
-    title: "DCF Valuation Model",
+    slug: "fraud-detection-benfords-law",
+    title: "Fraud Detection with Benford's Law",
     shortDescription:
-      "A discounted cash flow model estimating intrinsic value for a listed company, with sensitivity analysis on WACC and terminal growth.",
+      "Applied coding and analytics to detect anomalies in financial data using Benford's Law.",
     longDescription:
-      "Built a full discounted cash flow model from historical financials, including revenue build-up, working capital schedule, WACC calculation, and terminal value sensitivity tables. The final report summarizes assumptions, valuation output, and key risks.",
-    tags: ["DCF", "Valuation", "Excel", "Financial Modeling"],
+      "Used Benford's Law to test the distribution of leading digits in financial datasets, flagging entries that deviate from the expected pattern as candidates for further audit review. Combined statistical testing with coding-based analytics to automate anomaly detection across large transaction sets.",
+    tags: ["Fraud Detection", "Analytics", "Financial Data", "Research"],
     pdfPath: "/projects/sample-dcf-model.pdf",
-    githubUrl: "https://github.com/your-username/dcf-valuation-model",
+    githubUrl: "https://github.com/your-username/fraud-detection-benfords-law",
     thumbnail: "/images/projects/project-1-thumb.svg",
-    dateCompleted: "2026-02",
+    dateCompleted: "2023",
     featured: true,
   },
   {
     id: "2",
-    slug: "equity-research-note",
-    title: "Equity Research Note",
+    slug: "accounting-and-popular-culture",
+    title: "Accounting & Popular Culture (Food & Beverages)",
     shortDescription:
-      "An initiating-coverage style equity research note covering business overview, industry landscape, and valuation using comparable companies.",
+      "Researched how accountability and reporting shape branding and transparency in the F&B sector.",
     longDescription:
-      "Prepared an equity research note including company overview, competitive positioning, financial summary, and a comparable companies (comps) valuation analysis. Includes an investment thesis and key risks to the recommendation.",
-    tags: ["Equity Research", "Comps", "Valuation", "Excel"],
+      "Academic research study examining how accounting practices, accountability, and financial reporting influence brand perception and transparency in the food and beverage industry, drawing on real-world corporate reporting examples.",
+    tags: ["Accounting", "Research", "Branding", "Transparency"],
     pdfPath: "/projects/sample-equity-research.pdf",
-    githubUrl: "https://github.com/your-username/equity-research-note",
+    githubUrl: "https://github.com/your-username/accounting-and-popular-culture",
     thumbnail: "/images/projects/project-2-thumb.svg",
-    dateCompleted: "2026-04",
+    dateCompleted: "2023",
     featured: true,
-  },
-  {
-    id: "3",
-    slug: "budget-variance-dashboard",
-    title: "Budget Variance Dashboard",
-    shortDescription:
-      "A monthly budget-vs-actual variance analysis with driver-level commentary, built in Excel with pivot tables and charts.",
-    longDescription:
-      "Analyzed monthly budget vs. actual performance across departments, isolating price, volume, and mix drivers behind material variances. Delivered a one-page dashboard with waterfall charts and written variance commentary.",
-    tags: ["Variance Analysis", "FP&A", "Excel", "Dashboards"],
-    pdfPath: "/projects/sample-budget-variance.pdf",
-    githubUrl: "https://github.com/your-username/budget-variance-dashboard",
-    thumbnail: "/images/projects/project-3-thumb.svg",
-    dateCompleted: "2026-06",
-    featured: false,
   },
 ];
 
